@@ -23,7 +23,7 @@ public final class Utils {
      */
     public static void initTheme(Activity activity) {
         if (SettingSPUtils.getInstance().isUseCustomTheme()) {
-            activity.setTheme(R.style.CustomAppTheme);
+            activity.setTheme(R.style.AppTheme);
         } else {
             XUI.initTheme(activity);
         }
