@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">jizhang</string>
+    <string name="tab1">信息</string>
+    <string name="tab2">报告</string>
+    <string name="tab3">活动</string>
+    <string name="tab4">设置</string>
 </resources>
