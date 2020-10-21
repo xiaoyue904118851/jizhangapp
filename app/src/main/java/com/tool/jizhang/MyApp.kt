@@ -15,6 +15,7 @@ class MyApp : Application(){
         super.attachBaseContext(base)
         //解决4.x运行崩溃的问题
         MultiDex.install(this)
+        initUI()
     }
     /**
      * 初始化XUI 框架

@@ -28,6 +28,7 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
  * @author XUE
  * @since 2019/3/22 11:21
  */
+@SuppressWarnings(value="unchecked")
 public class BaseActivity extends XPageActivity {
 
     //==============需要注意的是，由于JPTabBar反射获取注解的是context，也就是容器Activity，因此需要将注解写在容器Activity内======================//
