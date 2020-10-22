@@ -52,10 +52,10 @@ class MainActivity : BaseActivity() {
         mTabLayout.addTab(my)
 
 
-        mingxi.setCustomView(getTabView("明细",R.drawable.img_home_tab_mingxi_g));
-        count.setCustomView(getTabView("统计",R.drawable.img_home_tab_count_g));
-        reward.setCustomView(getTabView("福利",R.drawable.img_home_tab_reward_g));
-        my.setCustomView(getTabView("我的",R.drawable.img_home_tab_my_g));
+        mingxi.customView =(getTabView("明细",R.drawable.img_home_tab_mingxi_g));
+        count.customView =(getTabView("统计",R.drawable.img_home_tab_count_g));
+        reward.customView =(getTabView("福利",R.drawable.img_home_tab_reward_g));
+        my.customView =(getTabView("我的",R.drawable.img_home_tab_my_g));
         WidgetUtils.setTabLayoutTextFont(mTabLayout)
 
        /* switchPage(ComponentsFragment::class.java)*/
@@ -64,6 +64,9 @@ class MainActivity : BaseActivity() {
             override fun onTabSelected(tab: TabLayout.Tab) {
 //                mAdapter.setSelected(tab.position)
                 val view = tab.customView
+                if(view==null){
+                    return
+                }
                 val img_title =
                     view?.findViewById(R.id.imageview) as ImageView
                 when (tab.position) {
@@ -89,6 +92,9 @@ class MainActivity : BaseActivity() {
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
                 val view = tab.customView
+                if(view==null){
+                    return
+                }
                 val img_title =
                     view?.findViewById(R.id.imageview) as ImageView
                 when (tab.position) {
