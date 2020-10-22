@@ -29,17 +29,20 @@
     </FrameLayout>
 
 
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/mTabLayout"
         style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/xui_actionbar_height"
-        android:background="@drawable/xui_list_item_bg_with_border_top"
+        android:background="@drawable/img_home_tab_bg"
         app:tabGravity="fill"
         app:tabIndicatorColor="@android:color/transparent"
         app:tabMinWidth="300dp"
         app:tabMode="fixed"
         app:tabPaddingTop="2dp"
-        app:tabTextAppearance="@style/TabText.Explain" />
+        app:tabBackground="@null"
+        app:tabRippleColor="@null"
+         />
 
 </LinearLayout>
