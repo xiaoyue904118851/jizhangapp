@@ -22,13 +22,9 @@ class MainActivity : BaseActivity() {
 
     fun initData(){
         val mingxi: TabLayout.Tab = mTabLayout.newTab()
-        mingxi.text = "明细"
-        mingxi.setIcon(R.drawable.img_home_tab_mingxi_g)
         mTabLayout.addTab(mingxi)
 
         val count: TabLayout.Tab = mTabLayout.newTab()
-        count.text = "统计"
-        count.setIcon(R.drawable.img_home_tab_count_g)
         mTabLayout.addTab(count)
 
         val kongbai: TabLayout.Tab = mTabLayout.newTab()
@@ -42,17 +38,13 @@ class MainActivity : BaseActivity() {
         mTabLayout.addTab(kongbai1)
 
         val reward: TabLayout.Tab = mTabLayout.newTab()
-        reward.text = "福利"
-        reward.setIcon(R.drawable.img_home_tab_reward_g)
         mTabLayout.addTab(reward)
 
         val my: TabLayout.Tab = mTabLayout.newTab()
-        my.text = "我的"
-        my.setIcon(R.drawable.img_home_tab_my_g)
         mTabLayout.addTab(my)
 
 
-        mingxi.customView =(getTabView("明细",R.drawable.img_home_tab_mingxi_g));
+        mingxi.customView =(getTabView("明细",R.drawable.img_home_tab_mingxi));
         count.customView =(getTabView("统计",R.drawable.img_home_tab_count_g));
         reward.customView =(getTabView("福利",R.drawable.img_home_tab_reward_g));
         my.customView =(getTabView("我的",R.drawable.img_home_tab_my_g));
@@ -114,6 +106,14 @@ class MainActivity : BaseActivity() {
             }
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+
+        btn_add.setOnClickListener {
+            if(jizhang_manager.visibility==View.GONE){
+                jizhang_manager.visibility = View.VISIBLE;
+            }else{
+                jizhang_manager.visibility = View.GONE;
+            }
+        }
     }
     override fun getLayoutId(): Int {
         return R.layout.activity_main
