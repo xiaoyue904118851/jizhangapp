@@ -55,10 +55,7 @@ class MainActivity : BaseActivity() {
         mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
 //                mAdapter.setSelected(tab.position)
-                val view = tab.customView
-                if(view==null){
-                    return
-                }
+                val view = tab.customView ?: return
                 val img_title =
                     view?.findViewById(R.id.imageview) as ImageView
                 when (tab.position) {
@@ -83,12 +80,9 @@ class MainActivity : BaseActivity() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
-                val view = tab.customView
-                if(view==null){
-                    return
-                }
+                val view = tab.customView ?: return
                 val img_title =
-                    view?.findViewById(R.id.imageview) as ImageView
+                    view.findViewById(R.id.imageview) as ImageView
                 when (tab.position) {
                     0->{
                         img_title.setImageResource(R.drawable.img_home_tab_mingxi_g)
@@ -119,7 +113,7 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main
     }
     // Tab自定义view
-    fun getTabView(title: String?, image_src: Int): View? {
+    private fun getTabView(title: String?, image_src: Int): View? {
         val v: View =
             LayoutInflater.from(applicationContext).inflate(R.layout.tab_item_view, null)
         val textView = v.findViewById(R.id.textview) as TextView
