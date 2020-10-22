@@ -30,7 +30,7 @@
 
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs"
+        android:id="@+id/mTabLayout"
         style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/xui_actionbar_height"
