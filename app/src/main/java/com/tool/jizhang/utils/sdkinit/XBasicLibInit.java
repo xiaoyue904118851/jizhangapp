@@ -18,6 +18,7 @@
 package com.tool.jizhang.utils.sdkinit;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.tool.jizhang.BuildConfig;
 import com.tool.jizhang.MyApp;
@@ -26,7 +27,9 @@ import com.tool.jizhang.base.db.InternalDataBase;
 import com.tool.jizhang.utils.XToastUtils;
 import com.xuexiang.xaop.XAOP;
 
+import com.xuexiang.xaop.util.PermissionUtils;
 import com.xuexiang.xormlite.logs.DBLog;
+import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.PageConfig;
 import com.xuexiang.xpage.PageConfiguration;
 import com.xuexiang.xpage.model.PageInfo;
@@ -79,9 +82,12 @@ public final class XBasicLibInit {
     private static void initPage(Application application) {
         //自动注册页面
         PageConfig.getInstance()
-                .setPageConfiguration(context -> {
-                    //自动注册页面,是编译时自动生成的，build一下就出来了
-                    return AppPageConfig.getInstance().getPages();
+                .setPageConfiguration(new PageConfiguration() { //页面注册
+                    @Override
+                    public List<PageInfo> registerPages(Context context) {
+                        //自动注册页面,是编译时自动生成的，build一下就出来了。如果你还没使用@Page的话，暂时是不会生成的。
+                        return AppPageConfig.getInstance().getPages(); //自动注册页面
+                    }
                 })
                 .debug(isDebug() ? "PageLog" : null)
                 .setContainActivityClazz(BaseActivity.class)
@@ -102,7 +108,13 @@ public final class XBasicLibInit {
         //日志打印切片开启
         XAOP.debug(isDebug());
         //设置动态申请权限切片 申请权限被拒绝的事件响应监听
-        XAOP.setOnPermissionDeniedListener(permissionsDenied -> XToastUtils.error("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ",")));
+        //设置动态申请权限切片 申请权限被拒绝的事件响应监听
+        XAOP.setOnPermissionDeniedListener(new PermissionUtils.OnPermissionDeniedListener() {
+            @Override
+            public void onDenied(List<String> permissionsDenied) {
+                XToastUtils.error("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ","));
+            }
+        });
     }
 
     /**

@@ -39,6 +39,7 @@ android {
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
+    ndkVersion ndkVersion
 
 }
 
@@ -69,6 +70,7 @@ dependencies {
     //XPage页面框架
     implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.0.0'
     annotationProcessor project(':widget_compiler')
+    implementation project(":widget_compiler")
 
     //ButterKnife
     implementation "com.jakewharton:butterknife:10.1.0"
