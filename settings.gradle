@@ -1,2 +1,2 @@
 rootProject.name='jizhang'
-include ':app', ':xui_lib', ':widget_compiler'
+include ':app',  ':widget_compiler'

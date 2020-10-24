@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.multidex.BuildConfig
 import androidx.multidex.MultiDex
 import com.tool.jizhang.utils.SettingSPUtils
+import com.tool.jizhang.utils.sdkinit.XBasicLibInit
 import com.xuexiang.xui.XUI
 
 class MyApp : Application(){
@@ -16,6 +17,7 @@ class MyApp : Application(){
         //解决4.x运行崩溃的问题
         MultiDex.install(this)
         initUI()
+        XBasicLibInit.init(this)
     }
     /**
      * 初始化XUI 框架

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "测试页面1",
+    "classPath": "com.xuexiang.xpagedemo.fragment.TestFragment1",
+    "params": ""
+  },
+  {
+    "name": "测试页面2",
+    "classPath": "com.xuexiang.xpagedemo.fragment.TestFragment2",
+    "params": {
+      "key1":"这是参数1的值",
+      "key2":"这是参数2的值"
+    }
+  }
+]

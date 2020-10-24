@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
 import com.tool.jizhang.base.BaseActivity
+import com.tool.jizhang.views.fg.ComponentsFragment
 import com.xuexiang.xui.utils.WidgetUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -100,7 +101,7 @@ class MainActivity : BaseActivity() {
             }
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
-
+        switchPage(ComponentsFragment::class.java)
         btn_add.setOnClickListener {
             if(jizhang_manager.visibility==View.GONE){
                 jizhang_manager.visibility = View.VISIBLE;
