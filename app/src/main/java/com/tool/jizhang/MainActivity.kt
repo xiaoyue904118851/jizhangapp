@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
+
+    var selectOldIndex = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initData()
@@ -33,11 +35,13 @@ class MainActivity : BaseActivity() {
 
         val kongbai: TabLayout.Tab = mTabLayout.newTab()
         kongbai.text = ""
+        kongbai.customView = null;
         kongbai.setIcon(R.drawable.img_home_kongbai)
         mTabLayout.addTab(kongbai)
 
         val kongbai1: TabLayout.Tab = mTabLayout.newTab()
         kongbai1.text = ""
+        kongbai1.customView = null;
         kongbai1.setIcon(R.drawable.img_home_kongbai)
         mTabLayout.addTab(kongbai1)
 
@@ -60,6 +64,8 @@ class MainActivity : BaseActivity() {
             override fun onTabSelected(tab: TabLayout.Tab) {
 //                mAdapter.setSelected(tab.position)
                 val view = tab.customView ?: return
+                onNewTabUnselected(mTabLayout.getTabAt(selectOldIndex)!!)
+                selectOldIndex = tab.position;
                 val img_title =
                     view?.findViewById(R.id.imageview) as ImageView
                 when (tab.position) {
@@ -88,23 +94,7 @@ class MainActivity : BaseActivity() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
-                val view = tab.customView ?: return
-                val img_title =
-                    view.findViewById(R.id.imageview) as ImageView
-                when (tab.position) {
-                    0->{
-                        img_title.setImageResource(R.drawable.img_home_tab_mingxi_g)
-                    }
-                    1->{
-                        img_title.setImageResource(R.drawable.img_home_tab_count_g)
-                    }
-                    4->{
-                        img_title.setImageResource(R.drawable.img_home_tab_reward_g)
-                    }
-                    5->{
-                        img_title.setImageResource(R.drawable.img_home_tab_my_g)
-                    }
-                }
+
             }
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
@@ -128,5 +118,25 @@ class MainActivity : BaseActivity() {
         val imageView: ImageView = v.findViewById(R.id.imageview) as ImageView
         imageView.setImageResource(image_src)
         return v
+    }
+
+    fun onNewTabUnselected(tab: TabLayout.Tab) {
+        val view = tab.customView ?: return
+        val img_title =
+            view.findViewById(R.id.imageview) as ImageView
+        when (tab.position) {
+            0->{
+                img_title.setImageResource(R.drawable.img_home_tab_mingxi_g)
+            }
+            1->{
+                img_title.setImageResource(R.drawable.img_home_tab_count_g)
+            }
+            4->{
+                img_title.setImageResource(R.drawable.img_home_tab_reward_g)
+            }
+            5->{
+                img_title.setImageResource(R.drawable.img_home_tab_my_g)
+            }
+        }
     }
 }
