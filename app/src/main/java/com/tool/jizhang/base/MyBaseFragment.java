@@ -27,6 +27,7 @@ import com.tool.jizhang.MainActivity;
 import com.tool.jizhang.R;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.model.PageInfo;
+import com.xuexiang.xui.adapter.recyclerview.BaseRecyclerAdapter;
 import com.xuexiang.xui.adapter.recyclerview.RecyclerViewHolder;
 import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
@@ -37,13 +38,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-/**
- * 基础主页面
- *
- * @author xuexiang
- * @since 2018/12/29 上午11:18
- */
-public abstract class BaseHomeFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener<PageInfo> {
+public abstract class MyBaseFragment extends BaseFragment implements RecyclerViewHolder.OnItemClickListener<PageInfo> {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -83,7 +78,7 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_home_container;
+        return R.layout.fragment_home_my;
     }
 
     @Override
@@ -93,10 +88,18 @@ public abstract class BaseHomeFragment extends BaseFragment implements RecyclerV
 
     private void initRecyclerView() {
         WidgetUtils.initGridRecyclerView(mRecyclerView, 3, DensityUtils.dp2px(2));
-/*
-        WidgetItemAdapter mWidgetItemAdapter = new WidgetItemAdapter(sortPageInfo(getPageContents()));
-        mWidgetItemAdapter.setOnItemClickListener(this);
-        mRecyclerView.setAdapter(mWidgetItemAdapter);*/
+        mRecyclerView.setAdapter(new BaseRecyclerAdapter<PageInfo>(){
+
+            @Override
+            protected void bindData(@NonNull RecyclerViewHolder holder, int position, PageInfo item) {
+
+            }
+
+            @Override
+            protected int getItemLayoutId(int viewType) {
+                return 0;
+            }
+        });
     }
 
     /**

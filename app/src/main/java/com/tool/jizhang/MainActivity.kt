@@ -7,7 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
 import com.tool.jizhang.base.BaseActivity
-import com.tool.jizhang.views.fg.ComponentsFragment
+import com.tool.jizhang.views.fg.CountFragment
+import com.tool.jizhang.views.fg.MingXiFragment
+import com.tool.jizhang.views.fg.MyFragment
+import com.tool.jizhang.views.fg.RewardFragment
 import com.xuexiang.xui.utils.WidgetUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -51,7 +54,7 @@ class MainActivity : BaseActivity() {
         my.customView =(getTabView("我的",R.drawable.img_home_tab_my_g));
         WidgetUtils.setTabLayoutTextFont(mTabLayout)
 
-       /* switchPage(ComponentsFragment::class.java)*/
+        switchPage(MingXiFragment::class.java)
 
         mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -66,15 +69,19 @@ class MainActivity : BaseActivity() {
                     else -> {
                     }*/
                     0->{
+                        switchPage(MingXiFragment::class.java)
                         img_title.setImageResource(R.drawable.img_home_tab_mingxi)
                     }
                     1->{
+                        switchPage(CountFragment::class.java)
                         img_title.setImageResource(R.drawable.img_home_tab_count)
                     }
                     4->{
+                        switchPage(RewardFragment::class.java)
                         img_title.setImageResource(R.drawable.img_home_tab_reward)
                     }
                     5->{
+                        switchPage(MyFragment::class.java)
                         img_title.setImageResource(R.drawable.img_home_tab_my)
                     }
                 }
@@ -101,7 +108,6 @@ class MainActivity : BaseActivity() {
             }
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
-        switchPage(ComponentsFragment::class.java)
         btn_add.setOnClickListener {
             if(jizhang_manager.visibility==View.GONE){
                 jizhang_manager.visibility = View.VISIBLE;

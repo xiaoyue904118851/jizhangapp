@@ -11,13 +11,13 @@ import com.xuexiang.xui.XUI
 class MyApp : Application(){
     override fun onCreate() {
         super.onCreate()
+        initUI()
+        XBasicLibInit.init(this)
     }
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         //解决4.x运行崩溃的问题
         MultiDex.install(this)
-        initUI()
-        XBasicLibInit.init(this)
     }
     /**
      * 初始化XUI 框架
